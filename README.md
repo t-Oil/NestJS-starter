@@ -56,6 +56,12 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+## Run seeds
+
+```bash
+# unit tests
+$ npm run seed
+```
 
 ## Deployment
 
