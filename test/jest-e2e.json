@@ -1,0 +1,22 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": "..",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "^@modules/(.*)$": "<rootDir>/../src/modules/$1",
+    "^@constants/(.*)$": "<rootDir>/../src/constants/$1",
+    "^@configs/(.*)$": "<rootDir>/../src/configs/$1",
+    "^@exceptions/(.*)$": "<rootDir>/../src/exceptions/$1",
+    "^@repositories/(.*)$": "<rootDir>/../src/repositories/$1",
+    "^@entities/(.*)$": "<rootDir>/../src/entities/$1",
+    "^@interceptors/(.*)$": "<rootDir>/../src/interceptors/$1",
+    "^@resources/(.*)$": "<rootDir>/../src/resources/$1",
+    "^@middlewares/(.*)$": "<rootDir>/../src/middlewares/$1",
+    "^@commons/(.*)$": "<rootDir>/../src/commons/$1",
+    "^@interfaces/(.*)$": "<rootDir>/../src/interfaces/$1"
+  }
+}

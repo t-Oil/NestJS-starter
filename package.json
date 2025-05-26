@@ -1,0 +1,129 @@
+{
+  "name": "nest-starter-template",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/jest/bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "seed": "ts-node -r tsconfig-paths/register src/db/seeds/run-seed.ts"
+  },
+  "engines": {
+    "npm": ">=10.0.0",
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@azure/storage-blob": "^12.27.0",
+    "@logtail/node": "^0.5.4",
+    "@nestjs/axios": "^4.0.0",
+    "@nestjs/cache-manager": "^3.0.1",
+    "@nestjs/common": "^11.0.21",
+    "@nestjs/config": "^4.0.2",
+    "@nestjs/core": "^11.0.1",
+    "@nestjs/event-emitter": "^3.0.1",
+    "@nestjs/jwt": "^11.0.0",
+    "@nestjs/passport": "^11.0.5",
+    "@nestjs/platform-express": "^11.1.1",
+    "@nestjs/swagger": "^11.1.5",
+    "@nestjs/typeorm": "^11.0.0",
+    "@types/multer": "^1.4.12",
+    "bcryptjs": "^3.0.2",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "date-fns": "^4.1.0",
+    "exceljs": "^4.4.0",
+    "lodash": "^4.17.21",
+    "multer": "^1.4.5-lts.2",
+    "mysql2": "^3.14.0",
+    "nanoid": "^3.3.11",
+    "nestjs-typeorm-paginate": "^4.1.0",
+    "npm": "^11.3.0",
+    "pg": "^8.15.1",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "typeorm": "^0.3.22",
+    "typeorm-extension": "^3.7.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.18.0",
+    "@nestjs/cli": "^11.0.0",
+    "@nestjs/schematics": "^11.0.0",
+    "@nestjs/testing": "^11.0.1",
+    "@swc/cli": "^0.6.0",
+    "@swc/core": "^1.10.8",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.7",
+    "@types/supertest": "^6.0.2",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "globals": "^15.14.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.4.2",
+    "source-map-support": "^0.5.21",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.5",
+    "ts-loader": "^9.5.2",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.20.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "./",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^@root(.*)$": "<rootDir>/src$1",
+      "^@repositories(.*)$": "<rootDir>/src/repositories$1",
+      "^@entities(.*)$": "<rootDir>/src/entities$1",
+      "^@commons(.*)$": "<rootDir>/src/commons$1",
+      "^@configs(.*)$": "<rootDir>/src/configs$1",
+      "^@modules(.*)$": "<rootDir>/src/modules$1",
+      "^@utils(.*)$": "<rootDir>/src/utils$1",
+      "^@exceptions(.*)$": "<rootDir>/src/exceptions$1",
+      "^@shared(.*)$": "<rootDir>/src/shared$1",
+      "^@interfaces(.*)$": "<rootDir>/src/interfaces$1",
+      "^@responses(.*)$": "<rootDir>/src/commons/responses$1",
+      "^@requests(.*)$": "<rootDir>/src/commons/requests$1",
+      "^@enums(.*)$": "<rootDir>/src/commons/enums$1",
+      "^@interceptors(.*)$": "<rootDir>/src/interceptors$1",
+      "^@resources(.*)$": "<rootDir>/src/commons/resources$1",
+      "^@validations(.*)$": "<rootDir>/src/commons/validations$1",
+      "^@middlewares(.*)$": "<rootDir>/src/middlewares$1"
+    }
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@nestjs/core",
+      "@swc/core"
+    ]
+  }
+}
