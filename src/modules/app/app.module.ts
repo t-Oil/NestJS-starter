@@ -18,6 +18,7 @@ import { UserRepository } from '@repositories/user.repository';
 import { MeService } from '@modules/auth/services/me.service';
 import { MasterModule } from '@modules/master/master.module';
 import { UserModule } from '@modules/user/user.module';
+import { RoleModule } from '@modules/role/role.module';
 
 @Module({
   imports: [
@@ -40,7 +41,8 @@ import { UserModule } from '@modules/user/user.module';
     LoggerModule,
     AuthModule,
     MasterModule,
-    UserModule
+    UserModule,
+    RoleModule
   ],
   controllers: [AppController],
   providers: [
@@ -53,9 +55,7 @@ import { UserModule } from '@modules/user/user.module';
       useClass: JwtAuthGuard,
     },
     AppService,
-    MeService,
     OauthRepository,
-    UserRepository,
   ],
 })
 export class AppModule {}

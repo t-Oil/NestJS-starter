@@ -7,7 +7,7 @@ import {
   BeforeUpdate,
   DeleteDateColumn,
 } from 'typeorm';
-import { generateRandomString } from '@commons/utils/index.util';
+import { v4 as uuidv4 } from 'uuid';
 import { ActiveStatusEnum } from '@commons/enums/active-status.enum';
 
 export abstract class BaseEntity {
@@ -42,7 +42,7 @@ export abstract class BaseEntity {
 
   @BeforeInsert()
   insertCreated() {
-    this.uid = generateRandomString(20);
+    this.uid = uuidv4();
     this.createdAt = new Date();
     this.updatedAt = new Date();
   }

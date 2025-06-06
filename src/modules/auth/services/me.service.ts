@@ -6,6 +6,8 @@ import { CACHE_MANAGER, Cache } from '@nestjs/cache-manager';
 import { ActiveStatusEnum } from '@commons/enums/active-status.enum';
 import { UserRepository } from '@repositories/user.repository';
 import { UserEntity } from '@entities/user.entity';
+import { MenuRepository } from '@repositories/menu.repository';
+import { MenuEntity } from '@entities/menu.entity';
 
 @Injectable()
 export class MeService {
@@ -14,27 +16,36 @@ export class MeService {
     private readonly logger: Logger,
     @InjectRepository(UserRepository)
     private readonly adminUserRepository: UserRepository,
+    @InjectRepository(MenuRepository)
+    private readonly menuRepository: MenuRepository,
   ) {}
 
-  async getMe(userId: number): Promise<UserEntity> {
+  async getMe(userId: number): Promise<UserEntity & { menus: MenuEntity[] }> {
     const cachedData = await this.cacheManager.get(`auth-${userId}`);
 
     if (cachedData) {
-      return cachedData as UserEntity;
+      return cachedData as UserEntity & { menus: MenuEntity[] };
     }
 
     try {
-      const user: UserEntity =
-        await this.adminUserRepository.findOneOrFail({
-          where: {
-            id: userId,
-            isActive: ActiveStatusEnum.ACTIVE,
-          },
-        });
+      const user: UserEntity = await this.adminUserRepository.findOneOrFail({
+        where: {
+          id: userId,
+          isActive: ActiveStatusEnum.ACTIVE,
+        },
+      });
 
-      await this.cacheManager.set(`auth-${userId}`, user);
+      const menus: MenuEntity[] =[]
+       
 
-      return user;
+      const result: UserEntity & { menus: MenuEntity[] } = {
+        ...user,
+        menus,
+      };
+
+      await this.cacheManager.set(`auth-${userId}`, result);
+
+      return result;
     } catch (error) {
       this.logger.error(`${MeService.name}[GET_ME]`, {
         error: {

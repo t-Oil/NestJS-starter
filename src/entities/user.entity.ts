@@ -6,13 +6,16 @@ import {
   DeleteDateColumn,
   Entity,
   JoinColumn,
+  JoinTable,
+  ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { MsDepartmentEntity } from './ms-department.entity';
 import { ActiveStatusEnum } from '@commons/enums/active-status.enum';
-import { generateRandomString } from '@commons/utils/index.util';
+import { v4 as uuidv4 } from 'uuid';
+import { RoleEntity } from './role.entity';
 
 @Entity('users')
 export class UserEntity {
@@ -61,15 +64,13 @@ export class UserEntity {
   })
   isActive!: ActiveStatusEnum;
 
-  @BeforeInsert()
-  insertCreated() {
-    this.uid = generateRandomString(20);
-    this.createdAt = new Date();
-    this.updatedAt = new Date();
-  }
-
-  @BeforeUpdate()
-  insertUpdated() {
-    this.updatedAt = new Date();
-  }
+  @ManyToMany(() => RoleEntity, {
+    cascade: true,
+  })
+  @JoinTable({
+    name: 'user_roles',
+    joinColumn: { name: 'user_id' },
+    inverseJoinColumn: { name: 'role_id' },
+  })
+  roles: RoleEntity[];
 }

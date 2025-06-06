@@ -27,8 +27,8 @@ export default class SystemAdminSeeder implements Seeder {
         password: hashSync('a!BrandI2*(1', 10),
         firstName: "System",
         lastName: "Admin",
-        createdAt: "2025-05-10T08:00:00.000Z",
-        updatedAt: "2025-05-10T08:00:00.000Z",
+        createdAt: new Date(),
+        updatedAt: new Date(),
         deletedAt: null,
         isActive: ActiveStatusEnum.IN_ACTIVE
       }

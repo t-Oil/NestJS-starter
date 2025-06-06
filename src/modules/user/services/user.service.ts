@@ -24,6 +24,7 @@ export class UserService {
     sortColumn: string = 'updatedAt',
     sortDirection: 'ASC' | 'DESC' = 'DESC',
     includes?: string,
+    conditions?: { [key: string]: any },
   ): Promise<Pagination<UserEntity>> {
     return await this.userRepository.paginate(
       options,
@@ -32,6 +33,9 @@ export class UserService {
       textSearch,
       ['firstName', 'lastName', 'email'],
       includes?.split(','),
+      {
+        ...conditions,
+      },
     );
   }
 
